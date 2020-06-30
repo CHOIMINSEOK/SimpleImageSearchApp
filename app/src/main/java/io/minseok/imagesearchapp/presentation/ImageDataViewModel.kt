@@ -4,20 +4,19 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import io.minseok.imagesearchapp.domain.service.ImageAPIService
-import io.reactivex.rxjava3.schedulers.Schedulers
+import io.minseok.imagesearchapp.domain.repository.ImageRepository
 
 class ImageDataViewModel(
-    val imageApiService: ImageAPIService
+    val imageRepository: ImageRepository
 ): ViewModel() {
     private val _input = MutableLiveData<String>()
     val input: LiveData<String> = _input
 
     fun updateInput(input: String) {
-        imageApiService.searchImage(input)
-            .subscribeOn(Schedulers.io())
-            .subscribe({ res ->
-                _input.postValue(res.toString())
+        imageRepository.searchImage(input)
+            .subscribe({
+                images ->
+                _input.postValue(images.map { it.imageUrl }.toString())
             }, { e ->
                 Log.d("LOG", e.message)
             })
