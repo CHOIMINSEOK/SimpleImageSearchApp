@@ -23,6 +23,16 @@ android {
         }
     }
 
+    // switch to Java 8 compatibility, for proper de-sugaring of some library
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
     dataBinding {
         enabled = true
     }
@@ -34,6 +44,19 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.3.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
+    /* Network */
+    implementation "com.squareup.okhttp3:okhttp:$vOkHttp3"
+    implementation "com.squareup.okhttp3:okhttp-urlconnection:$vOkHttp3"
+    implementation "com.squareup.okhttp3:logging-interceptor:$vOkHttp3"
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation "com.squareup.retrofit2:retrofit:$vRetrofit2"
+    implementation "com.squareup.retrofit2:converter-gson:$vRetrofit2"
+    implementation "com.squareup.retrofit2:adapter-rxjava3:$vRetrofit2"
+
+
+    implementation "io.reactivex.rxjava3:rxjava:3.0.4"
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
