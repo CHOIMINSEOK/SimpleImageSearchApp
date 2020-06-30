@@ -1,4 +1,4 @@
-package io.minseok.imagesearchapp.presentation.view.search
+package io.minseok.imagesearchapp.presentation.view.home.search
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView

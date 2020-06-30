@@ -13,16 +13,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".presentation.view.search.ImageSearchActivity">
+        android:theme="@style/Theme.AppCompat.Light">
+        <activity android:name="io.minseok.imagesearchapp.presentation.view.home.search.ImageSearchFragment">
+        </activity>
+
+        <activity android:name=".presentation.view.detail.ImageDetailActivity" />
+        <activity android:name=".presentation.view.home.HomeActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".presentation.view.detail.ImageDetailActivity" />
     </application>
 
 </manifest>
