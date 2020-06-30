@@ -54,6 +54,10 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$vRetrofit2"
     implementation "com.squareup.retrofit2:adapter-rxjava3:$vRetrofit2"
 
+    /* Dependency Injection */
+    implementation "org.koin:koin-android:$vKoin"
+    implementation "org.koin:koin-androidx-scope:$vKoin"
+    implementation "org.koin:koin-androidx-viewmodel:$vKoin"
 
     implementation "io.reactivex.rxjava3:rxjava:3.0.4"
 

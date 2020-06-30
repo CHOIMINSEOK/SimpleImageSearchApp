@@ -7,13 +7,13 @@ import io.minseok.imagesearchapp.R
 import io.minseok.imagesearchapp.presentation.base.BaseActivity
 import io.minseok.imagesearchapp.databinding.ActivityImageSearchBinding
 import kotlinx.android.synthetic.main.activity_image_search.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ImageSearchActivity : BaseActivity<ActivityImageSearchBinding>() {
 
     override val layoutResId =
         R.layout.activity_image_search
-    private val imageSearchViewModel =
-        ImageDataViewModel()
+    private val imageSearchViewModel: ImageDataViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
