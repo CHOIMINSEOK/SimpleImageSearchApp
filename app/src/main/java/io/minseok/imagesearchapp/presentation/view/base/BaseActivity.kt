@@ -1,4 +1,4 @@
-package io.minseok.imagesearchapp.presentation.base
+package io.minseok.imagesearchapp.presentation.view.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
