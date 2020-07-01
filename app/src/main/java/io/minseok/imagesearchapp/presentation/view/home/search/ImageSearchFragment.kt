@@ -1,12 +1,8 @@
 package io.minseok.imagesearchapp.presentation.view.home.search
 
 import android.content.Intent
-import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.minseok.imagesearchapp.R
 import io.minseok.imagesearchapp.databinding.FragmentImageSearchBinding
@@ -29,28 +25,11 @@ class ImageSearchFragment : BaseFragment<FragmentImageSearchBinding>() {
         val DETAIL_URL = "detail_url"
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        super.onCreateView(inflater, container, savedInstanceState)
+    override fun initView() {
+        super.initView()
         binding.imageDataViewModel = imageDataViewModel
 
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        initViews()
-    }
-
-    private fun initViews() {
-        list_images.adapter =
-            ImageItemAdapter(
-                this::handleAction
-            )
+        list_images.adapter = ImageItemAdapter(this::handleAction)
         list_images.layoutManager = LinearLayoutManager(requireContext())
 
         et_search.addTextChangedListener(object: TextWatcher {

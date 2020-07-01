@@ -1,9 +1,5 @@
 package io.minseok.imagesearchapp.presentation.view.home.favorite
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.minseok.imagesearchapp.databinding.FragmentFavoriteBinding
 import io.minseok.imagesearchapp.presentation.view.base.BaseFragment
@@ -17,28 +13,11 @@ class FavoriteFragment: BaseFragment<FragmentFavoriteBinding>() {
     override val layoutResId: Int = R.layout.fragment_favorite
     private val imageDataViewModel: ImageDataViewModel by sharedViewModel()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        super.onCreateView(inflater, container, savedInstanceState)
+    override fun initView() {
+        super.initView()
         binding.imageDataViewModel = imageDataViewModel
-
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        initViews()
-    }
-
-    private fun initViews() {
-        binding.listImages.adapter =
-            ImageItemAdapter(
-                this::handleAction
-            )
+        binding.listImages.adapter = ImageItemAdapter(
+            this::handleAction         )
         binding.listImages.layoutManager = LinearLayoutManager(requireContext())
     }
 
