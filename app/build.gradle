@@ -57,7 +57,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation "com.squareup.retrofit2:retrofit:$vRetrofit2"
     implementation "com.squareup.retrofit2:converter-gson:$vRetrofit2"
-    implementation "com.squareup.retrofit2:adapter-rxjava3:$vRetrofit2"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$vRetrofit2"
 
     /* Dependency Injection */
     implementation "org.koin:koin-android:$vKoin"
@@ -70,7 +70,7 @@ dependencies {
     kapt "androidx.room:room-compiler:$vRoom"
 
     /* RxJava */
-    implementation "io.reactivex.rxjava3:rxjava:3.0.4"
+    implementation "io.reactivex.rxjava2:rxjava:2.2.19"
 
     /* Image */
     implementation 'com.github.bumptech.glide:glide:4.11.0'

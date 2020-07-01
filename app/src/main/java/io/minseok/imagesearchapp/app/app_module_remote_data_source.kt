@@ -3,13 +3,11 @@ package io.minseok.imagesearchapp.app
 import io.minseok.imagesearchapp.data.remote.ImageAPIService
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module.module
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import java.io.IOException
 
 
 val remoteDataSourceAppModule = module {
@@ -52,7 +50,7 @@ private fun createRetrofit(
 ): Retrofit {
     return Retrofit.Builder()
         .baseUrl("https://dapi.kakao.com/v2/")
-        .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .addConverterFactory(GsonConverterFactory.create())
         .client(okHttpClient)
         .build()

@@ -16,8 +16,7 @@ class FavoriteFragment: BaseFragment<FragmentFavoriteBinding>() {
     override fun initView() {
         super.initView()
         binding.imageDataViewModel = imageDataViewModel
-        binding.listImages.adapter = ImageItemAdapter(
-            this::handleAction         )
+        binding.listImages.adapter = ImageItemAdapter(this::handleAction)
         binding.listImages.layoutManager = LinearLayoutManager(requireContext())
     }
 

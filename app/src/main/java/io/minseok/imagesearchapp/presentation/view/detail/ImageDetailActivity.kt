@@ -5,7 +5,7 @@ import io.minseok.imagesearchapp.R
 import io.minseok.imagesearchapp.databinding.ActivityImageDetailBinding
 import io.minseok.imagesearchapp.presentation.view.base.BaseActivity
 import io.minseok.imagesearchapp.presentation.view.home.search.ImageSearchFragment
-import io.minseok.imagesearchapp.support.load
+import io.minseok.imagesearchapp.support.extensions.load
 
 class ImageDetailActivity: BaseActivity<ActivityImageDetailBinding>() {
     override val layoutResId = R.layout.activity_image_detail

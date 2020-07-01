@@ -1,4 +1,4 @@
-package io.minseok.imagesearchapp.support
+package io.minseok.imagesearchapp.support.extensions
 
 import android.widget.ImageView
 import com.bumptech.glide.Glide

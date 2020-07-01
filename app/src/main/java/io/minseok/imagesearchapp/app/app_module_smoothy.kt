@@ -8,7 +8,7 @@ import org.koin.dsl.module.module
 
 val smoothyCommonModule = module {
 
-    single { ImageRepositoryImpl(get(), get()) as ImageRepository }
+    single { ImageRepositoryImpl(get(), get(), get()) as ImageRepository }
 
     viewModel {
         ImageDataViewModel(

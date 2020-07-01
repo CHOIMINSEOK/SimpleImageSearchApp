@@ -4,7 +4,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import io.minseok.imagesearchapp.domain.Image
 import io.minseok.imagesearchapp.presentation.view.home.search.Action
-import io.minseok.imagesearchapp.support.load
+import io.minseok.imagesearchapp.support.extensions.load
 import kotlinx.android.synthetic.main.item_image.view.*
 
 class ImageItemViewHolder(
