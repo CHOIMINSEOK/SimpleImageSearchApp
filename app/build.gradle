@@ -64,12 +64,16 @@ dependencies {
     implementation "org.koin:koin-androidx-scope:$vKoin"
     implementation "org.koin:koin-androidx-viewmodel:$vKoin"
 
+    /* DB */
+    implementation "androidx.room:room-runtime:$vRoom"
+    kapt "androidx.room:room-compiler:$vRoom"
+
     /* RxJava */
     implementation "io.reactivex.rxjava3:rxjava:3.0.4"
 
     /* Image */
     implementation 'com.github.bumptech.glide:glide:4.11.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    kapt 'com.github.bumptech.glide:compiler:4.11.0'
 
 
     /* Test */
