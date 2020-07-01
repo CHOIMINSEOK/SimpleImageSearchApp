@@ -1,8 +1,9 @@
-package io.minseok.imagesearchapp.presentation.view.home.search
+package io.minseok.imagesearchapp.presentation.view.home.common
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import io.minseok.imagesearchapp.domain.Image
+import io.minseok.imagesearchapp.presentation.view.home.search.Action
 import io.minseok.imagesearchapp.support.load
 import kotlinx.android.synthetic.main.item_image.view.*
 
@@ -16,11 +17,20 @@ class ImageItemViewHolder(
             img_thumnail.load(image.imageUrl)
 
             img_thumnail.setOnClickListener {
-                block.invoke(Action.GoDetail(image.imageUrl))
+                block.invoke(
+                    Action.GoDetail(
+                        image.imageUrl
+                    )
+                )
             }
 
             switch_favorite.setOnCheckedChangeListener { _, isChecked ->
-                block.invoke(Action.SetFavorite(image, isChecked))
+                block.invoke(
+                    Action.SetFavorite(
+                        image,
+                        isChecked
+                    )
+                )
             }
         }
     }

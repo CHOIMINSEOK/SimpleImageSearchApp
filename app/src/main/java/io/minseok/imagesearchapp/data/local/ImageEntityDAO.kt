@@ -1,19 +1,18 @@
 package io.minseok.imagesearchapp.data.local
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.lifecycle.LiveData
+import androidx.room.*
 import io.minseok.imagesearchapp.data.local.model.ImageEntity
+import io.reactivex.Completable
 
 @Dao
 interface ImageEntityDAO {
     @Query("SELECT * FROM imageEntity")
-    fun getAll(): List<ImageEntity>
+    fun getAll(): LiveData<List<ImageEntity>>
 
-    @Insert
-    fun insert(imageEntity: ImageEntity)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(imageEntity: ImageEntity): Completable
 
     @Delete
-    fun delete(imageEntity: ImageEntity)
+    fun delete(imageEntity: ImageEntity): Completable
 }

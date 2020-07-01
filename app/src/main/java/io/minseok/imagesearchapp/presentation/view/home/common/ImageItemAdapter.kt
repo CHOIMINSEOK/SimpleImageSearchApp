@@ -1,4 +1,4 @@
-package io.minseok.imagesearchapp.presentation.view.home.search
+package io.minseok.imagesearchapp.presentation.view.home.common
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import io.minseok.imagesearchapp.R
 import io.minseok.imagesearchapp.domain.Image
+import io.minseok.imagesearchapp.presentation.view.home.search.Action
 
 class ImageItemAdapter(
     private val block: (action: Action) -> Unit

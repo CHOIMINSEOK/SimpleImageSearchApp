@@ -13,17 +13,17 @@ import io.minseok.imagesearchapp.databinding.FragmentImageSearchBinding
 import io.minseok.imagesearchapp.domain.Image
 import io.minseok.imagesearchapp.presentation.view.base.BaseFragment
 import io.minseok.imagesearchapp.presentation.view.detail.ImageDetailActivity
+import io.minseok.imagesearchapp.presentation.view.home.common.ImageItemAdapter
 import io.minseok.imagesearchapp.presentation.viewmodel.ImageDataViewModel
 import kotlinx.android.synthetic.main.fragment_image_search.*
-import org.koin.androidx.viewmodel.ext.android.viewModel
-
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
 class ImageSearchFragment : BaseFragment<FragmentImageSearchBinding>() {
 
     override val layoutResId =
         R.layout.fragment_image_search
-    private val imageSearchViewModel: ImageDataViewModel by viewModel()
+    private val imageDataViewModel: ImageDataViewModel by sharedViewModel()
 
     companion object {
         val DETAIL_URL = "detail_url"
@@ -35,7 +35,7 @@ class ImageSearchFragment : BaseFragment<FragmentImageSearchBinding>() {
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        binding.imageDataViewModel = imageSearchViewModel
+        binding.imageDataViewModel = imageDataViewModel
 
         return binding.root
     }
@@ -47,13 +47,15 @@ class ImageSearchFragment : BaseFragment<FragmentImageSearchBinding>() {
     }
 
     private fun initViews() {
-        list_images.adapter =  ImageItemAdapter(this::handleAction)
+        list_images.adapter =
+            ImageItemAdapter(
+                this::handleAction
+            )
         list_images.layoutManager = LinearLayoutManager(requireContext())
-
 
         et_search.addTextChangedListener(object: TextWatcher {
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                imageSearchViewModel.updateInput(s.toString())
+                imageDataViewModel.updateInput(s.toString())
             }
 
             override fun afterTextChanged(s: Editable?) {}
@@ -70,7 +72,7 @@ class ImageSearchFragment : BaseFragment<FragmentImageSearchBinding>() {
             }
 
             is Action.SetFavorite -> {
-                imageSearchViewModel.setFavorite(action.image, action.favorate)
+                imageDataViewModel.setFavorite(action.image, action.favorate)
             }
         }
     }

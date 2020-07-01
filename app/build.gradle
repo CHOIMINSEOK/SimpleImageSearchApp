@@ -66,6 +66,7 @@ dependencies {
 
     /* DB */
     implementation "androidx.room:room-runtime:$vRoom"
+    implementation "androidx.room:room-rxjava2:$vRoom"
     kapt "androidx.room:room-compiler:$vRoom"
 
     /* RxJava */

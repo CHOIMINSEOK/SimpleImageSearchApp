@@ -1,8 +1,9 @@
-package io.minseok.imagesearchapp.presentation.view.home.search
+package io.minseok.imagesearchapp.presentation.view.home.common
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import io.minseok.imagesearchapp.domain.Image
+import io.minseok.imagesearchapp.presentation.view.home.common.ImageItemAdapter
 
 object ViewBindingAdapter {
     @BindingAdapter("bind:images")
