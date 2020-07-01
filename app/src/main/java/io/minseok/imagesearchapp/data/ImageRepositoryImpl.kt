@@ -1,5 +1,6 @@
 package io.minseok.imagesearchapp.data
 
+import android.util.Log
 import io.minseok.imagesearchapp.domain.ImageRepository
 import io.minseok.imagesearchapp.data.remote.ImageAPIService
 import io.minseok.imagesearchapp.data.remote.ImageDataMapper
@@ -17,5 +18,13 @@ class ImageRepositoryImpl(
             .flatMap { res ->
                 Single.just(res.documents.map(ImageDataMapper::mapFromImageData))
             }
+    }
+
+    override fun setFavorite(image: Image) {
+        Log.d("TAG Set", image.toString())
+    }
+
+    override fun removeFavorite(image: Image) {
+        Log.d("TAG Remove", image.toString())
     }
 }

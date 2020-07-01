@@ -8,7 +8,7 @@ import io.minseok.imagesearchapp.R
 import io.minseok.imagesearchapp.domain.Image
 
 class ImageItemAdapter(
-    private val block: (url: String) -> Unit
+    private val block: (action: Action) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var images: List<Image> = listOf()
     set(value) {

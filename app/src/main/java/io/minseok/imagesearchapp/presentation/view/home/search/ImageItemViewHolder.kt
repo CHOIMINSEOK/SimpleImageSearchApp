@@ -8,15 +8,19 @@ import kotlinx.android.synthetic.main.item_image.view.*
 
 class ImageItemViewHolder(
     view: View,
-    private val block: (url: String) -> Unit
+    private val block: (action: Action) -> Unit
 ) : RecyclerView.ViewHolder(view) {
-    fun onBind(imageData: Image) {
+    fun onBind(image: Image) {
         with(itemView) {
-            tv_sitename.text = imageData.displaySiteName
-            img_thumnail.load(imageData.imageUrl)
+            tv_sitename.text = image.displaySiteName
+            img_thumnail.load(image.imageUrl)
 
             img_thumnail.setOnClickListener {
-                block.invoke(imageData.imageUrl)
+                block.invoke(Action.GoDetail(image.imageUrl))
+            }
+
+            switch_favorite.setOnCheckedChangeListener { _, isChecked ->
+                block.invoke(Action.SetFavorite(image, isChecked))
             }
         }
     }

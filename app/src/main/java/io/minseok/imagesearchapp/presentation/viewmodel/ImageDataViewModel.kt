@@ -21,4 +21,16 @@ class ImageDataViewModel(
                 Log.d("LOG", e.message)
             })
    }
+
+    fun setFavorite(image: Image, favorite: Boolean) {
+        when (favorite) {
+            true -> {
+                imageRepository.setFavorite(image)
+            }
+
+            false -> {
+                imageRepository.removeFavorite(image)
+            }
+        }
+    }
 }

@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.minseok.imagesearchapp.R
 import io.minseok.imagesearchapp.databinding.FragmentImageSearchBinding
+import io.minseok.imagesearchapp.domain.Image
 import io.minseok.imagesearchapp.presentation.view.base.BaseFragment
 import io.minseok.imagesearchapp.presentation.view.detail.ImageDetailActivity
 import io.minseok.imagesearchapp.presentation.viewmodel.ImageDataViewModel
@@ -46,10 +47,7 @@ class ImageSearchFragment : BaseFragment<FragmentImageSearchBinding>() {
     }
 
     private fun initViews() {
-        list_images.adapter =  ImageItemAdapter { url ->
-            startActivity(Intent(requireContext(), ImageDetailActivity::class.java)
-                .putExtra(DETAIL_URL, url))
-        }
+        list_images.adapter =  ImageItemAdapter(this::handleAction)
         list_images.layoutManager = LinearLayoutManager(requireContext())
 
 
@@ -63,4 +61,22 @@ class ImageSearchFragment : BaseFragment<FragmentImageSearchBinding>() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
         })
     }
+
+    private fun handleAction(action: Action) {
+        when(action) {
+            is Action.GoDetail -> {
+                startActivity(Intent(requireContext(), ImageDetailActivity::class.java)
+                    .putExtra(DETAIL_URL, action.url))
+            }
+
+            is Action.SetFavorite -> {
+                imageSearchViewModel.setFavorite(action.image, action.favorate)
+            }
+        }
+    }
+}
+
+sealed class Action {
+    class GoDetail(val url: String) : Action()
+    class SetFavorite(val image: Image, val favorate: Boolean) : Action()
 }
