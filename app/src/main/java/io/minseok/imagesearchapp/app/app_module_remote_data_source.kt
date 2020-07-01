@@ -1,6 +1,6 @@
 package io.minseok.imagesearchapp.app
 
-import io.minseok.imagesearchapp.domain.service.ImageAPIService
+import io.minseok.imagesearchapp.data.remote.ImageAPIService
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -21,15 +21,12 @@ val remoteDataSourceAppModule = module {
 }
 
 private fun createRequestHeaderInterceptor(): Interceptor {
-    return object : Interceptor {
-        @Throws(IOException::class)
-        override fun intercept(chain: Interceptor.Chain): Response {
-            return chain.proceed(chain.request().newBuilder().run {
-                addHeader("Content-Type", "application/json")
-                addHeader("Authorization", "KakaoAK 5d38a7536024ddb0e76443759d038b13")
-                build()
-            })
-        }
+    return Interceptor { chain ->
+        chain.proceed(chain.request().newBuilder().run {
+            addHeader("Content-Type", "application/json")
+            addHeader("Authorization", "KakaoAK 5d38a7536024ddb0e76443759d038b13")
+            build()
+        })
     }
 }
 

@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import io.minseok.imagesearchapp.R
-import io.minseok.imagesearchapp.data.model.ImageData
+import io.minseok.imagesearchapp.domain.Image
 
 class ImageItemAdapter(
     private val block: (url: String) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    var images: List<ImageData> = listOf()
+    var images: List<Image> = listOf()
     set(value) {
         field = value
         Log.d("TAG", value.toString())
