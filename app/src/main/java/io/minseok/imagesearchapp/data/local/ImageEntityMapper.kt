@@ -11,10 +11,11 @@ object ImageEntityMapper {
         )
     }
 
-    fun mapFromEntity(imageEntity: ImageEntity): Image {
+    fun mapFromEntity(imageEntity: ImageEntity, favorite: Boolean): Image {
         return Image(
             imageEntity.imageUrl,
-            imageEntity.displaySiteName
+            imageEntity.displaySiteName,
+            favorite
         )
     }
 }

@@ -4,10 +4,11 @@ import io.minseok.imagesearchapp.data.remote.model.ImageData
 import io.minseok.imagesearchapp.domain.Image
 
 object ImageDataMapper {
-    fun mapFromImageData(imageData: ImageData): Image {
+    fun mapFromImageData(imageData: ImageData, favorite: Boolean): Image {
         return Image(
             imageData.imageUrl,
-            imageData.displaySiteName
+            imageData.displaySiteName,
+            favorite
         )
     }
 }

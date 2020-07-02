@@ -24,6 +24,9 @@ class ImageItemViewHolder(
                 )
             }
 
+            switch_favorite.setOnCheckedChangeListener(null)
+            switch_favorite.isChecked = image.favorite
+
             switch_favorite.setOnCheckedChangeListener { _, isChecked ->
                 block.invoke(
                     Action.SetFavorite(
