@@ -1,6 +1,5 @@
 package io.minseok.imagesearchapp.presentation.view.home.common
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -14,7 +13,6 @@ class ImageItemAdapter(
     var images: List<Image> = listOf()
     set(value) {
         field = value
-        Log.d("TAG", value.toString())
         notifyDataSetChanged()
     }
 

@@ -5,6 +5,7 @@ import io.minseok.imagesearchapp.data.local.ImageEntityMapper
 import io.minseok.imagesearchapp.domain.ImageRepository
 import io.minseok.imagesearchapp.data.remote.ImageAPIService
 import io.minseok.imagesearchapp.data.remote.ImageDataMapper
+import io.minseok.imagesearchapp.data.remote.model.ImageData
 import io.minseok.imagesearchapp.domain.Image
 import io.minseok.imagesearchapp.support.rx.SchedulerProvider
 import io.reactivex.BackpressureStrategy
@@ -20,6 +21,14 @@ class ImageRepositoryImpl(
 ) : ImageRepository {
 
     private val queryPublish: PublishSubject<String> = PublishSubject.create()
+    private val searchedImageListFlowable: Flowable<List<ImageData>> =
+        queryPublish.toFlowable(BackpressureStrategy.LATEST).switchMapSingle {
+                imageAPIService.searchImage(it)
+                    .subscribeOn(schedulerProvider.io())
+                    .map { it.documents }
+                    .doOnError { it.printStackTrace() }
+                    .onErrorReturnItem(listOf())
+            }
 
     override fun searchImage(query: String) {
         queryPublish.onNext(query)
@@ -38,10 +47,7 @@ class ImageRepositoryImpl(
 
     override fun observeSearchImage(): Flowable<List<Image>> {
         return Flowables.combineLatest(
-            queryPublish.toFlowable(BackpressureStrategy.LATEST).switchMapSingle {
-                imageAPIService.searchImage(it)
-                    .subscribeOn(schedulerProvider.io()).map { it.documents }
-            },
+            searchedImageListFlowable,
             imageEntityDAO.getAll()
         ).map { (imageDataList, favorites) ->
             imageDataList.map { imageData ->
