@@ -12,9 +12,9 @@
 
 
 ### Stack
-Language: Kotlin
-AAC: ViewModel, LiveData, Room
-Network: Retrofit2, OkHttp3, Gson
-Async Handling: RxJava2
-DI: Koin
-Image Loader: Glide
+- Language: Kotlin
+- AAC: ViewModel, LiveData, Room
+- Network: Retrofit2, OkHttp3, Gson
+- Async Handling: RxJava2
+- DI: Koin  
+- Image Loader: Glide
